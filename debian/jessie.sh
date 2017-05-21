@@ -4,7 +4,7 @@ install_jessie(){
     mkdir -p /srv/muonium;mkdir -p /srv/muonium/nova;
     git clone https://github.com/muonium/core /srv/muonium/;
 
-    if [ -z "$apache_USER" ];then
+    if [ -z "$apache_USER" ];then
         apache_USER=www-data;
     fi
     if [ -z "$apache_GROUP" ];then
