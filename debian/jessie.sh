@@ -13,7 +13,17 @@ install_jessie(){
 
     chown -R $apache_USER:$apache_GROUP /srv/muonium;
 
-    echo $conf_apache > /etc/apache2/sites-available/muonium.conf; #put the conf in the vhost
+    echo "
+    <VirtualHost *:80>
+        DocumentRoot \"/srv/muonium/\"
+
+        <Directory />
+            Require all granted
+            AllowOverride All
+            Options None
+        </Directory>
+    </VirtualHost>
+    "> /etc/apache2/sites-available/muonium.conf;
     cd /etc/apache2/sites-available/;a2enmod muonium.conf; #enable the vhost
     a2enmod rewrite;
     systemctl restart apache2.service;
