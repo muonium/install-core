@@ -1,5 +1,5 @@
 install_jessie(){
-    source ../vars;
+    source ../vars.sh;
     apt-get install git apache2 php5 php5-mysql mariadb-server -y;
     mkdir -p /srv/muonium;mkdir -p /srv/muonium/nova;
     git clone https://github.com/muonium/core /srv/muonium/;
@@ -10,7 +10,6 @@ install_jessie(){
     a2enmod rewrite;
     systemctl restart apache2.service;
     cd -; #Come Back Mister ~
-
     chmod +x ./mysql_config.sh;
     ./mysql_config.sh;
 

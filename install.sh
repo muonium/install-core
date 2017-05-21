@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 if [ -e /etc/debian_version ];then
     os=$(cat /etc/os-release|grep "VERSION_ID")
     if [ os='VERSION_ID="8"'];then #debian jessie
