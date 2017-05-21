@@ -1,2 +1,13 @@
 apache_USER=www-data
 apache_GROUP=www-data
+conf_apache='
+<VirtualHost *:80>
+    DocumentRoot "/srv/muonium/"
+
+    <Directory />
+        Require all granted
+        AllowOverride All
+        Options None
+    </Directory>
+</VirtualHost>
+'
