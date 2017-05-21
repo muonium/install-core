@@ -5,5 +5,8 @@ if [ -e /etc/debian_version ];then
     if [ $os="VERSION_ID=\"8\"" ];then #debian jessie
         source ./debian/jessie.sh; #source the right file
         install_jessie; #call the install function
+        echo "##############################
+        You can now go to http://yourserverip:666/
+        ##############################";
     fi
 fi
