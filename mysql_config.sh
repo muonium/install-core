@@ -6,6 +6,16 @@ source vars.sh;
 echo "Please enter the name of the database you want to use for Muonium (default : cloud) and press [ENTER] :"
 read db
 
+if [ -z "$mysql_USER" ];then
+	read -p "Please, enter your mysql user\
+	> " mysql_USER;
+fi
+
+if [ -z "$mysql_PASSWD" ];then
+	read -p "Please, enter your $mysql_USER password\
+	> " mysql_PASSWD;
+fi
+
 if [ -z "$db" ]; then
     db='cloud'
 fi

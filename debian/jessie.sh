@@ -3,6 +3,14 @@ install_jessie(){
     apt-get install git apache2 php5 php5-mysql mariadb-server -y;
     mkdir -p /srv/muonium;mkdir -p /srv/muonium/nova;
     git clone https://github.com/muonium/core /srv/muonium/;
+
+    if [ -z "$apache_USER" ];then
+        apache_USER=www-data;
+    fi
+    if [ -z "$apache_GROUP" ];then
+        apache_GROUP=www-data;
+    fi
+
     chown -R $apache_USER:$apache_GROUP /srv/muonium;
 
     echo $conf_apache > /etc/apache2/sites-available/muonium.conf; #put the conf in the vhost
