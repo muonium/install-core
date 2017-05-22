@@ -11,6 +11,10 @@ install_jessie(){
         apache_GROUP=www-data;
     fi
 
+    mkdir -p /etc/ssl/mui;cd /etc/ssl/mui;
+    openssl req -x509 -newkey rsa:$bits_SSL -keyout key.pem -out cert.pem -days $days_SSL -nodes -subj '/CN=localhost';
+    cd -;
+
     chown -R $apache_USER:$apache_GROUP /srv/muonium;
 
     echo "
@@ -18,15 +22,21 @@ install_jessie(){
     <VirtualHost *:666>
         DocumentRoot \"/srv/muonium/\"
 
+        Protocol https
+
         <Directory />
             Require all granted
             AllowOverride All
             Options None
         </Directory>
+        SSLEngine On
+        SSLCertificateFile /etc/ssl/mui/cert.pem
+        SSLCertificateKeyFile /etc/mui/key.pem
+
     </VirtualHost>
     "> /etc/apache2/sites-available/muonium.conf;
     cd /etc/apache2/sites-available/;a2ensite muonium.conf; #enable the vhost
-    a2enmod rewrite;
+    a2enmod rewrite;a2enmod ssl;
     systemctl restart apache2.service;
     cd -; #Come Back Mister ~
     chmod +x ./mysql_config.sh;
