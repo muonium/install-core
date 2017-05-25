@@ -12,7 +12,13 @@ install_jessie(){
     fi
 
     mkdir -p /etc/ssl/mui;cd /etc/ssl/mui;
-    openssl req -x509 -newkey rsa:$bits_SSL -keyout key.pem -out cert.pem -days $days_SSL -nodes -subj '/CN=localhost';
+    if [ -z "$me_DOMAINE_NAME" ];then
+        me_DOMAINE_NAME=localhost;
+    fi
+    if [ -z "$bits_SSL" ];then
+        bits_SSL=4096;
+    fi
+    openssl req -x509 -newkey rsa:$bits_SSL -keyout key.pem -out cert.pem -days $days_SSL -nodes -subj "/CN=$me_DOMAINE_NAME";
     cd -;
 
     chown -R $apache_USER:$apache_GROUP /srv/muonium;

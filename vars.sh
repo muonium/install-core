@@ -9,3 +9,6 @@ mysql_PASSWD=root
 #HTTPS
 bits_SSL=4096
 days_SSL=365
+
+#other stuff
+me_DOMAINE_NAME=localhost
