@@ -7,6 +7,6 @@ Post-Scriptum: don't forget to check vars.sh, it could burn your house, rape you
 # ROADMAP
 - HTTPS 4096 self-signed TLS1.2
 
-#Known bugs
+# Known bugs
 
 - OpenSSL tends to fail because of the -subj option. Sometimes, it doesn't...
