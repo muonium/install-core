@@ -15,7 +15,7 @@ install_jessie(){
     if [ -z "$bits_SSL" ];then
         bits_SSL=4096;
     fi
-    openssl req -x509 -newkey rsa:$bits_SSL -keyout key.pem -out cert.pem -days $days_SSL  -subj "/CN=localhost" -nodes;
+    openssl req -x509 -newkey rsa:$bits_SSL -keyout key.pem -out cert.pem -days $days_SSL  -subj '/CN=localhost' -nodes;
     cd -;
 
     chown -R $apache_USER:$apache_GROUP /srv/muonium;
