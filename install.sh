@@ -6,7 +6,7 @@ if [ -e /etc/debian_version ];then
         source ./debian/jessie.sh; #source the right file
         install_jessie; #call the install function
         echo "##############################
-        You can now go to http://$me_DOMAINE_NAME:666/
+        You can now go to http://yourserverip:666/
         ##############################";
     fi
 fi
