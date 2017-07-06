@@ -7,6 +7,5 @@ mysql_USER=root
 mysql_PASSWD=root
 
 #HTTPS
-bits_SSL=4096
-days_SSL=365
-me_COUNTRY=FR
+ssl_bits=4096
+ssl_country="FR"
