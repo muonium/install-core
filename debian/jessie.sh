@@ -1,6 +1,6 @@
 install_jessie(){
     source ../vars.sh;
-    apt-get install git apache2 php5 php5-mysql mariadb-server -y;
+    apt-get install git apache2 php5 php5-mysql mariadb-server mariadb-client -y;
     mkdir -p /srv/muonium;mkdir -p /srv/muonium/nova;
     git clone https://github.com/muonium/core /srv/muonium/core;
 
